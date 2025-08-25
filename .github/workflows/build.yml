@@ -31,8 +31,6 @@ jobs:
           - x86_64
         sdk:
           - openwrt-24.10
-          - openwrt-22.03
-          - SNAPSHOT
 
     steps:
       - uses: actions/checkout@v4
