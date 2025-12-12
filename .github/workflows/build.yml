@@ -12,7 +12,7 @@ on:
         description: '请填写发布的说明'
         required: false
         default: ''
-      set_sdk:
+      sdk_version:
         description: '请填写opnwrt-sdk版本号,如：24.10.4'
         required: false
         default: '24.10.4'
@@ -22,12 +22,11 @@ concurrency:
 env:
   TAG: "${{ github.event.inputs.tag }}"
   TZ: Asia/Shanghai
-  SET_SDK: "${{ github.event.inputs.set_sdk }}"
 permissions:
   contents: write
 jobs:
   build:
-    name: Build ${{ matrix.arch }}-${{ env.SET_SDK }}
+    name: Build ${{ matrix.arch }}-${{ matrix.sdk }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -36,7 +35,7 @@ jobs:
           - x86_64
           
         sdk:
-          - ${{ env.SET_SDK }}
+          - ${{  github.event.inputs.sdk_version }}
 
     steps:
       - uses: actions/checkout@v4
