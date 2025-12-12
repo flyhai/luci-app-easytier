@@ -12,7 +12,7 @@ on:
         description: '请填写发布的说明'
         required: false
         default: ''
-      sdk:
+      set_sdk:
         description: '请填写opnwrt-sdk版本号,如：24.10.4'
         required: false
         default: '24.10.4'
@@ -22,7 +22,7 @@ concurrency:
 env:
   TAG: "${{ github.event.inputs.tag }}"
   TZ: Asia/Shanghai
-  SDK: "${{ github.event.inputs.sdk }}"
+  SET_SDK: "${{ github.event.inputs.set_sdk }}"
 permissions:
   contents: write
 jobs:
@@ -36,7 +36,7 @@ jobs:
           - x86_64
           
         sdk:
-          - ${{ env.SDK }}
+          - ${{ env.SET_SDK }}
 
     steps:
       - uses: actions/checkout@v4
