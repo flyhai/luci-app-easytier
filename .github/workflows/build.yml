@@ -27,7 +27,7 @@ permissions:
   contents: write
 jobs:
   build:
-    name: Build ${{ matrix.arch }}-${{ matrix.sdk }}
+    name: Build ${{ matrix.arch }}-${{ env.SET_SDK }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
